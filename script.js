@@ -605,3 +605,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+// Add ripple effect to all buttons
+document.querySelectorAll('.btn-primary, .btn-donate-bone, .btn-secondary, .auth-btn-primary').forEach(button => {
+    button.addEventListener('click', function(e) {
+        const x = e.clientX - e.target.getBoundingClientRect().left;
+        const y = e.clientY - e.target.getBoundingClientRect().top;
+        
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    });
+});

@@ -555,3 +555,270 @@ th {
         min-width: 100px;
     }
 }
+
+.btn-logo {
+    height: 22px;
+    width: auto;
+    vertical-align: middle;
+}
+
+/* Make anchor tags with button class look like buttons */
+.btn-donate-bone {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+     background: linear-gradient(135deg, #2c6e5c 0%, #1a4d3e 100%);
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn-donate-bone:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201, 160, 61, 0.4);
+    text-decoration: none;
+}
+
+/* Remove underline from ALL buttons and links that look like buttons */
+.btn-primary, .btn-secondary, .btn-donate-bone, .btn-large {
+    text-decoration: none !important;
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-donate-bone:hover {
+    text-decoration: none !important;
+}
+
+/* ========== PROFESSIONAL BUTTON STYLES WITH ANIMATIONS ========== */
+
+/* Base button styles - all buttons */
+.btn-primary, .btn-secondary, .btn-donate-bone, .auth-btn-primary, .auth-btn-outline {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 28px;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    overflow: hidden;
+    text-decoration: none !important;
+    z-index: 1;
+}
+
+/* Apply Now button - Green theme */
+.btn-primary {
+    background: linear-gradient(135deg, #2c6e5c 0%, #1a4d3e 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(44, 110, 92, 0.3);
+}
+
+/* Donate Bones button - Deep Emerald */
+.btn-donate-bone {
+    background: linear-gradient(135deg, #0f5c4b 0%, #0a4034 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(15, 92, 75, 0.3);
+}
+
+/* Secondary buttons */
+.btn-secondary, .auth-btn-outline {
+    background: transparent;
+    border: 2px solid #2c6e5c;
+    color: #2c6e5c;
+}
+
+.auth-btn-primary {
+    background: linear-gradient(135deg, #2c6e5c 0%, #1a4d3e 100%);
+    color: white;
+}
+
+/* ========== SHINY REFLECTION EFFECT (Top shine) ========== */
+.btn-primary::before, .btn-donate-bone::before, .auth-btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+    border-radius: 50px 50px 0 0;
+    pointer-events: none;
+}
+
+/* ========== MIRROR REFLECTION (Bottom shadow reflection) ========== */
+.btn-primary::after, .btn-donate-bone::after, .auth-btn-primary::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 10%;
+    width: 80%;
+    height: 20px;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(8px);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.btn-primary:hover::after, .btn-donate-bone:hover::after, .auth-btn-primary:hover::after {
+    opacity: 1;
+}
+
+/* ========== SWEEPING LIGHT ANIMATION ========== */
+.btn-primary .shine, .btn-donate-bone .shine, .auth-btn-primary .shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover .shine, .btn-donate-bone:hover .shine, .auth-btn-primary:hover .shine {
+    left: 100%;
+}
+
+/* ========== HOVER EFFECTS ========== */
+.btn-primary:hover, .btn-donate-bone:hover, .auth-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(44, 110, 92, 0.4);
+}
+
+.btn-primary:active, .btn-donate-bone:active, .auth-btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(44, 110, 92, 0.3);
+}
+
+.btn-secondary:hover, .auth-btn-outline:hover {
+    transform: translateY(-2px);
+    background: rgba(44, 110, 92, 0.1);
+    box-shadow: 0 5px 15px rgba(44, 110, 92, 0.2);
+}
+
+/* ========== PULSE ANIMATION (Attention grabber) ========== */
+@keyframes gentlePulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(44, 110, 92, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(44, 110, 92, 0.5);
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(44, 110, 92, 0.3);
+    }
+}
+
+.btn-primary, .btn-donate-bone {
+    animation: gentlePulse 2s infinite;
+}
+
+.btn-primary:hover, .btn-donate-bone:hover {
+    animation: none;
+}
+
+/* ========== RIPPLE EFFECT ON CLICK ========== */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ========== FLOATING ANIMATION for Donate Button ========== */
+@keyframes gentleFloat {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.btn-donate-bone {
+    animation: gentlePulse 2s infinite, gentleFloat 3s ease-in-out infinite;
+}
+
+.btn-donate-bone:hover {
+    animation: none;
+    transform: translateY(-3px);
+}
+
+/* ========== SLIDE-IN ANIMATION for page elements ========== */
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-section, .card {
+    animation: slideInFromBottom 0.6s ease-out;
+}
+
+/* ========== FADE-IN ANIMATION for buttons ========== */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.btn-primary, .btn-donate-bone, .btn-secondary {
+    animation: fadeInScale 0.5s ease-out;
+}
+
+/* ========== HOVER GLOW EFFECT ========== */
+.btn-primary:hover, .btn-donate-bone:hover {
+    box-shadow: 0 0 20px rgba(44, 110, 92, 0.6);
+}
+
+/* ========== BUTTON TEXT SHINE ========== */
+.btn-primary span, .btn-donate-bone span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Logo inside button */
+.btn-logo {
+    height: 22px;
+    width: auto;
+    vertical-align: middle;
+    filter: brightness(0) invert(1);
+}
+
+/* Large button variant */
+.btn-large {
+    padding: 14px 36px;
+    font-size: 1.1rem;
+}
