@@ -29,7 +29,10 @@
             <div class="nav-links" id="navLinks">
                 <button class="nav-btn" data-page="home">Home</button>
                 <button class="nav-btn" data-page="about">About</button>
-                <button class="nav-btn" data-page="documents">Documents</button>
+                <!-- <button class="nav-btn" data-page="documents">Documents</button> -->
+                <a href="https://docs.google.com/document/d/1XfS4x4BpGtA6H5TGql_oTE8ad6DLL2W_puYKx9G3Fcc/edit?usp=drivesdk"
+                    target="_blank" rel="noopener noreferrer" class="nav-btn"
+                    style="text-decoration: none;">Documents</a>
                 <button class="nav-btn" data-page="articles">Articles</button>
                 <button class="nav-btn" data-page="contact">Contact</button>
                 <button class="nav-btn" data-page="admin" id="adminNavBtn" style="display:none;">Admin</button>
@@ -50,10 +53,28 @@
     <!-- Main Container -->
     <main class="container" id="appContainer">
         <!-- HOME PAGE -->
-        <div id="homePage" class="page active-page">
+        <!-- <div id="homePage" class="page active-page">
             <section class="hero-section">
                 <div class="hero-badge">Accepting primary bones receiving request form</div>
+                <h2 class="hero-title">A Shariah Compliant Initiative <br>Led by Medical Students</h2> -->
+
+        <div id="homePage" class="page active-page">
+            <section class="hero-section">
+                <!-- Eye-catching Hostel & College Banner -->
+                <!-- Clean & Elegant Hostel Banner -->
+                <div class="hostel-banner">
+                    <div class="hostel-line"></div>
+                    <div class="hostel-content">
+                        <i class="fas fa-location-dot"></i>
+                        <span>Dr. Taiyubur Rahman Girls' Hostel</span>
+                        <span class="separator">•</span>
+                        <span>Dinajpur Medical College</span>
+                    </div>
+                    <div class="hostel-line"></div>
+                </div>
+                <div class="hero-badge">Accepting primary bones receiving request form</div>
                 <h2 class="hero-title">A Shariah Compliant Initiative <br>Led by Medical Students</h2>
+
                 <div class="hero-cta">
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7QAuiZJyUaIpx6vWgVMfAE9wTPks-K4uwqxKuKqWrERZiaw/viewform"
                         target="_blank" rel="noopener noreferrer" class="btn-primary btn-large" id="openApplyLink">
@@ -82,45 +103,90 @@
         </div>
 
         <!-- ABOUT PAGE -->
-        <div id="aboutPage" class="page">
-            <div class="card">
+        <!-- Modern Clean About Page - Medical NGO Style (Lexend Font) -->
 
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
 
-                <h2>WHO WE ARE</h2>
+        <div id="aboutPage" class="page" style="font-family:'Lexend', sans-serif;">
 
-                <p>
-                    The Sadaqah Bone Bank is a Shariah compliant initiative that works for the female medical students
-                    of
-                    <mark><strong>Dr. Taiyobur Rahman Girls’ Hostel, Dinajpur Medical College</strong></mark>.
-                </p>
+            <div class="card"
+                style="max-width:900px; margin:auto; padding:25px; font-family:'Lexend', sans-serif; line-height:1.7; color:#222;">
 
-                <p>
-                    This bank is established to align our medical education with Islamic principles. As the
-                    commercialization
-                    of the human body is a violation of its dignity and strictly prohibited in Islam, our goal is to
-                    introduce
-                    alternatives for commercial human bones by fostering a culture of "Sadaqah" (charity) and "Amanah"
-                    (trust)
-                    within our campus and hostel.
-                </p>
+                <!-- HEADER -->
+                <div style="text-align:center; margin-bottom:25px;">
+                    <h2 style="font-size:26px; margin:0; letter-spacing:1px;">
+                        ABOUT THE INITIATIVE
+                    </h2>
+                    <p style="margin:5px 0 0; font-size:14px; color:#666;">
+                        Sadaqah • Ethics • Medical Integrity
+                    </p>
+                </div>
 
-                <p>
-                    This organization is totally non-political and non-profitable. Our reward is with Allah and our
-                    success is
-                    in seeing a cleaner, more ethical educational environment in our college.
-                </p>
-                <h3>Our Mission</h3>
-                <p>Advancing Medical Excellence through Integrity and Taqwa. The study of human anatomy is an essential
-                    foundation of medical education. However, it presents a significant ethical challenge when it
-                    involves the commercial trade of human remains. The mission of the Sadaqah Bone Bank is to offer a
-                    Shariah-compliant alternative.</p>
-                <h3>How It Works</h3>
-                <p>The Sadaqah Bone Bank operates as a coordination platform. System built on trust, responsibility, and
-                    mutual respect: Registry of Donors, Connecting Students, Custodian Responsibility, Perpetual
-                    Charity.</p>
-                <div class="ref-box">
-                    <h4>References for Verification</h4>
-                    <ul>
+                <!-- WHO WE ARE -->
+                <section style="margin-bottom:25px;">
+                    <h3 style="font-size:18px; border-left:4px solid #2c7be5; padding-left:10px; margin-bottom:10px;">
+                        Who We Are
+                    </h3>
+
+                    <p style="margin:0 0 10px;">
+                        The Sadaqah Bone Bank is a Shariah compliant initiative that works for the female medical
+                        students of
+                        <strong style="color:#2c7be5; background:#eef5ff; padding:2px 6px; border-radius:4px;">
+                            Dr. Taiyobur Rahman Girls’ Hostel, Dinajpur Medical College
+                        </strong>.
+                    </p>
+
+                    <p style="margin:0 0 10px;">
+                        This initiative aligns medical education with Islamic principles. As commercialization of the
+                        human body
+                        violates its dignity and is prohibited in Islam, we promote ethical alternatives based on
+                        Sadaqah (charity)
+                        and Amanah (trust).
+                    </p>
+
+                    <p style="margin:0;">
+                        This organization is non-political and non-profitable. Our reward is with Allah, and our success
+                        lies in
+                        building a more ethical and responsible educational environment.
+                    </p>
+                </section>
+
+                <!-- MISSION -->
+                <section style="margin-bottom:25px;">
+                    <h3 style="font-size:18px; border-left:4px solid #28a745; padding-left:10px; margin-bottom:10px;">
+                        Our Mission
+                    </h3>
+
+                    <p style="margin:0;">
+                        Advancing medical excellence through integrity and Taqwa. We aim to provide a Shariah-compliant
+                        alternative to the ethical challenges in anatomical education by fostering voluntary donation,
+                        trust-based systems, and responsible academic practice.
+                    </p>
+                </section>
+
+                <!-- HOW IT WORKS -->
+                <section style="margin-bottom:25px;">
+                    <h3 style="font-size:18px; border-left:4px solid #ff9800; padding-left:10px; margin-bottom:10px;">
+                        How It Works
+                    </h3>
+
+                    <ul style="margin:0; padding-left:20px;">
+                        <li>Registry of voluntary donors within ethical guidelines</li>
+                        <li>Connection between medical students through structured system</li>
+                        <li>Custodian responsibility ensuring dignity and respect</li>
+                        <li>Promotion of perpetual charity (Sadaqah Jariyah)</li>
+                    </ul>
+                </section>
+
+                <!-- REFERENCES -->
+                <section style="background:#f8f9fa; padding:15px; border-radius:10px;">
+                    <h3 style="font-size:18px; margin-top:0;">
+                        References for Verification
+                    </h3>
+
+                    <ul style="padding-left:18px; font-size:14px;">
                         <li>
                             IslamWeb:
                             <a href="https://www.islamweb.net/en/fatwa/278092/buying-and-selling-human-bones-is-absolutely-prohibited"
@@ -157,12 +223,17 @@
                             </a>
                         </li>
                     </ul>
+                </section>
+
+                <!-- FOOTER -->
+                <div style="text-align:center; margin-top:20px; font-size:12px; color:#777;">
+                    © 2026 Sadaqah Bone Bank | Ethics in Medical Education
                 </div>
+
             </div>
-            <footer class="site-footer">
-                <p>college© 2026 Sadaqah Bone Bank | Ethics in Education</p>
-            </footer>
         </div>
+
+
 
         <!-- DOCUMENTS PAGE -->
         <div id="documentsPage" class="page">
@@ -297,7 +368,8 @@
 
                         <div>
                             <strong>Facebook Page</strong>
-                            <a href="https://www.facebook.com/SadaqahBonesBank" target="_blank">
+                            <a href="https://www.facebook.com/people/Sadaqah-Bones-Bank/61589041302081/"
+                                target="_blank">
                                 Sadaqah Bone Bank
                             </a>
                         </div>
