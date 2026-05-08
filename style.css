@@ -58,11 +58,12 @@ h3 { font-size: 1.3rem; margin: 1.2rem 0 0.8rem; }
 
 /* Logo styling - handles dark background logos */
 .nav-logo {
-    height: 45px;
-    width: auto;
-     background: #1a1a1a;/* background: #1a1a1a; Matches black logo background */
-    padding: 6px 12px;
-    border-radius: 10px;
+    height: 40px;
+    width: 45px;
+     background: white;/* background: #1a1a1a; Matches black logo background */
+   /* padding: 6px 12px;*/
+   padding : 2px 4px;
+    border-radius: 8px;
     vertical-align: middle;
     margin-right: 12px;
 }
@@ -576,7 +577,7 @@ th {
     font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: white;
+   color: white;
 }
 
 .btn-donate-bone:hover {
@@ -821,4 +822,21 @@ th {
 .btn-large {
     padding: 14px 36px;
     font-size: 1.1rem;
+}
+
+.bone-icon{
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.btn-primary:hover{
+    background: white !important;
+    color: black !important;
+}
+
+.btn-primary:hover i{
+    color: black !important;
 }
