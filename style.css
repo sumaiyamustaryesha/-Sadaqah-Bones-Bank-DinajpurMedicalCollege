@@ -68,15 +68,16 @@ h3 { font-size: 1.3rem; margin: 1.2rem 0 0.8rem; }
     margin-right: 12px;
 }
 
-
+/* ULTRA SIMPLE - WORKS ON EVERY DEVICE */
 .nav-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 1rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
 }
 
 .logo h1 {
@@ -1066,5 +1067,196 @@ th {
     
     .dynamic-notice {
         font-size: 0.7rem;
+    }
+}
+
+/* ========== CONTACT PAGE - PROFESSIONAL CARDS ========== */
+.contact-hero {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-subtitle {
+    color: #6a7c70;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.contact-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.contact-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 1.8rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e7e5e4;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #2c6e5c, #c9a03d);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(44, 110, 92, 0.15);
+}
+
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #e8f3ef 0%, #d4e8e1 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+    font-size: 1.8rem;
+    color: #2c6e5c;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+    background: linear-gradient(135deg, #2c6e5c 0%, #1a4d3e 100%);
+    color: white;
+    transform: scale(1.05);
+}
+
+.contact-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: #1a4d3e;
+}
+
+.contact-card p {
+    color: #6a7c70;
+    font-size: 0.85rem;
+    margin-bottom: 1.2rem;
+    word-break: break-word;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #c9a03d;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.contact-link:hover {
+    gap: 10px;
+    color: #b8860b;
+}
+
+.response-note {
+    background: linear-gradient(135deg, #e8f3ef 0%, #f0f7f4 100%);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    margin: 1.5rem 0;
+    border-left: 4px solid #c9a03d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.response-note i {
+    color: #c9a03d;
+    font-size: 1.2rem;
+}
+
+.response-note p {
+    color: #2c6e5c;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Responsive for tablets */
+@media (max-width: 768px) {
+    .contact-grid-cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .contact-card {
+        padding: 1.2rem;
+    }
+    
+    .contact-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+    }
+}
+
+/* Responsive Navbar - Auto stacks on mobile */
+@media (max-width: 700px) {
+    .nav-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
+/*quick fix navbar*/
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0.8rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem; /* Increased gap */
+}
+
+/* Make nav links have more breathing room */
+.nav-links {
+    display: flex;
+    gap: 1.5rem; /* Increased from 1rem */
+    align-items: center;
+}
+
+/* On tablet - stack but organized */
+@media (max-width: 850px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        order: 1;
+    }
+    
+    .auth-section {
+        order: 2;
+    }
+    
+    .logo {
+        order: 0;
     }
 }
