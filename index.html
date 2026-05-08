@@ -75,16 +75,40 @@
                 <!-- <div class="hero-badge">Accepting primary bones receiving request form</div> -->
 
                 <!-- Animated Notice Bell -->
+                <!-- Notice Bell - Opens Google Doc Modal -->
                 <div class="notice-container">
                     <div class="notice-bell" id="noticeBell">
                         <i class="fas fa-bell"></i>
                         <span class="bell-dot"></span>
                     </div>
-                    <div class="notice-text" id="noticeText">
+                    <div class="notice-text" id="noticeClickArea">
                         <span class="notice-label">📢 NOTICE:</span>
-                        <span id="dynamicNotice">Loading notice...</span>
+                        <span class="dynamic-notice" id="dynamicNotice">Click to view announcement</span>
                     </div>
                 </div>
+
+                <!-- Modal for Google Doc -->
+                <div id="noticeModal" class="modal" style="display:none;">
+                    <div class="modal-content notice-modal">
+                        <div class="modal-header">
+                            <h3><i class="fas fa-bell"></i> Official Notice Board</h3>
+                            <button class="close-modal" id="closeNoticeModal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <iframe
+                                src="https://docs.google.com/document/d/e/2PACX-1vTqA1N3cWI0ew5nSrlgry9oF1E1cihJrqevsUQPm2zGnywv0k_NWUzJtyMDh5YxjzCxmEHLCIqUkaUC/pub?embedded=true"
+                                style="width:100%; height:550px; border:none; border-radius:12px;"></iframe>
+                        </div>
+                        <div class="notice-footer">
+                            📌 Last updated when Google Doc is republished
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden iframe to fetch Google Doc content (invisible) -->
+                <iframe id="googleDocFetcher"
+                    src="https://docs.google.com/document/d/e/2PACX-1vTqA1N3cWI0ew5nSrlgry9oF1E1cihJrqevsUQPm2zGnywv0k_NWUzJtyMDh5YxjzCxmEHLCIqUkaUC/pub?embedded=true"
+                    style="display: none; width: 0; height: 0;" onload="extractNoticeFromIframe()"></iframe>
 
                 <h2 class="hero-title">A Shariah Compliant Initiative <br>Led by Medical Students</h2>
 

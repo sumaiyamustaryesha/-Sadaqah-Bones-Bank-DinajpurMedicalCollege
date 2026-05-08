@@ -24,16 +24,16 @@ function initializeDatabase() {
             if (!db.handovers) db.handovers = [];
             if (!db.users) db.users = [];
             if (!db.inventory) db.inventory = { fullSets: 3, halfSets: 1, activeCycles: 2 };
-        } catch(e) { console.error(e); }
+        } catch (e) { console.error(e); }
     }
-    
+
     // Create default admin if no users exist
     if (db.users.length === 0) {
         db.users.push({ email: "admin@sadaqah.com", password: "admin123", role: "admin" });
         // Add a demo student account for testing
         db.users.push({ email: "student@example.com", password: "student123", role: "student" });
     }
-    
+
     // Add some sample handovers for demo if empty
     if (db.handovers.length === 0) {
         db.handovers = [
@@ -41,7 +41,7 @@ function initializeDatabase() {
             { name: "Nusrat Jahan", batch: "MBBS 2024", type: "Half Set", date: "2026-02-20" }
         ];
     }
-    
+
     saveDatabase();
 }
 
@@ -61,7 +61,7 @@ function showToast(message, isError = false) {
     // Remove any existing toast
     const existingToast = document.querySelector('.success-toast');
     if (existingToast) existingToast.remove();
-    
+
     const toast = document.createElement('div');
     toast.className = 'success-toast';
     toast.style.cssText = `
@@ -115,7 +115,7 @@ function openModal(modalId) {
 function renderAuthWidget() {
     const authSection = document.getElementById('authSection');
     if (!authSection) return;
-    
+
     if (currentUser) {
         authSection.innerHTML = `
             <div class="user-greeting">
@@ -138,7 +138,7 @@ function renderAuthWidget() {
                 if (adminNav) adminNav.style.display = 'none';
             });
         }
-        
+
         const adminNav = document.getElementById('adminNavBtn');
         if (adminNav) {
             adminNav.style.display = currentUser.role === 'admin' ? 'inline-block' : 'none';
@@ -156,7 +156,7 @@ function renderAuthWidget() {
         const signupBtn = document.getElementById('signupNavBtn');
         if (loginBtn) loginBtn.addEventListener('click', () => openModal('loginModal'));
         if (signupBtn) signupBtn.addEventListener('click', () => openModal('signupModal'));
-        
+
         const adminNav = document.getElementById('adminNavBtn');
         if (adminNav) adminNav.style.display = 'none';
     }
@@ -210,10 +210,10 @@ function showPage(pageId) {
         const page = document.getElementById(`${id}Page`);
         if (page) page.classList.remove('active-page');
     });
-    
+
     const activePage = document.getElementById(`${pageId}Page`);
     if (activePage) activePage.classList.add('active-page');
-    
+
     // Special handling for admin page
     if (pageId === 'admin') {
         if (!currentUser || currentUser.role !== 'admin') {
@@ -224,7 +224,7 @@ function showPage(pageId) {
         renderPendingRequests();
         refreshInventoryUI();
     }
-    
+
     if (pageId === 'documents') {
         refreshInventoryUI();
         renderHandoverTable();
@@ -241,7 +241,7 @@ function refreshInventoryUI() {
             <div class="stat-card"><i class="fas fa-sync-alt"></i> Active Cycles: ${db.inventory.activeCycles}</div>
         `;
     }
-    
+
     const fullInput = document.getElementById('adminFullSets');
     const halfInput = document.getElementById('adminHalfSets');
     const activeInput = document.getElementById('adminActiveCycle');
@@ -253,12 +253,12 @@ function refreshInventoryUI() {
 function renderHandoverTable() {
     const tbody = document.getElementById('handoverTbody');
     if (!tbody) return;
-    
+
     if (db.handovers.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No handover records found</td></tr>';
         return;
     }
-    
+
     tbody.innerHTML = db.handovers.map(h => `
         <tr>
             <td><strong>${escapeHtml(h.name)}</strong></td>
@@ -274,11 +274,11 @@ function updateInventoryFromAdmin() {
     const full = parseInt(document.getElementById('adminFullSets').value);
     const half = parseInt(document.getElementById('adminHalfSets').value);
     const active = parseInt(document.getElementById('adminActiveCycle').value);
-    
+
     if (!isNaN(full)) db.inventory.fullSets = full;
     if (!isNaN(half)) db.inventory.halfSets = half;
     if (!isNaN(active)) db.inventory.activeCycles = active;
-    
+
     saveDatabase();
     refreshInventoryUI();
     showToast('Inventory updated successfully');
@@ -288,12 +288,12 @@ function addHandoverRecord() {
     const name = document.getElementById('handoverName').value.trim();
     const batch = document.getElementById('handoverBatch').value.trim();
     const type = document.getElementById('handoverType').value;
-    
+
     if (!name || !batch) {
         showToast('Please fill name and batch', true);
         return;
     }
-    
+
     db.handovers.unshift({
         name: name,
         batch: batch,
@@ -311,13 +311,13 @@ function addHandoverRecord() {
 function renderPendingRequests() {
     const container = document.getElementById('pendingRequestsList');
     if (!container) return;
-    
+
     const pending = db.boneRequests.filter(r => r.status === 'pending');
     if (pending.length === 0) {
         container.innerHTML = '<p style="color: gray;">✨ No pending requests at the moment.</p>';
         return;
     }
-    
+
     container.innerHTML = pending.map((req, idx) => `
         <div style="background: #faf9f6; border-radius: 1rem; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #c9a03d;">
             <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 1rem;">
@@ -332,7 +332,7 @@ function renderPendingRequests() {
             </div>
         </div>
     `).join('');
-    
+
     document.querySelectorAll('.approve-req-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const idx = parseInt(btn.getAttribute('data-idx'));
@@ -359,19 +359,19 @@ function renderPendingRequests() {
 // ======================== BONE REQUEST FORM (RECEIVING) ========================
 function submitBoneRequest(e) {
     e.preventDefault();
-    
+
     if (!currentUser) {
         showToast('Please login to submit request', true);
         openModal('loginModal');
         return;
     }
-    
+
     const agreePolicy = document.querySelector('input[name="agreePolicy"]:checked')?.value;
     if (agreePolicy !== 'হ্যাঁ') {
         showToast('You must agree to the policies to proceed', true);
         return;
     }
-    
+
     const requestData = {
         email: document.getElementById('reqEmail').value,
         name: document.getElementById('reqName').value,
@@ -389,18 +389,18 @@ function submitBoneRequest(e) {
         status: 'pending',
         createdAt: new Date().toISOString()
     };
-    
+
     // Validation
     if (!requestData.name || !requestData.batch || !requestData.phone || !requestData.roll) {
         showToast('Please fill all required fields', true);
         return;
     }
-    
+
     db.boneRequests.push(requestData);
     saveDatabase();
     closeAllModals();
     showToast('✓ Request submitted successfully! Admin will review soon.');
-    
+
     // Reset form
     document.getElementById('boneRequestForm').reset();
 }
@@ -408,13 +408,13 @@ function submitBoneRequest(e) {
 // ======================== BONE DONATION FORM (DONATE BONES) ========================
 function submitDonationForm(e) {
     e.preventDefault();
-    
+
     if (!currentUser) {
         showToast('Please login to donate bones', true);
         openModal('loginModal');
         return;
     }
-    
+
     const donation = {
         name: document.getElementById('donateName').value,
         email: document.getElementById('donateEmail').value,
@@ -425,12 +425,12 @@ function submitDonationForm(e) {
         status: 'pending',
         date: new Date().toISOString()
     };
-    
+
     if (!donation.name || !donation.email || !donation.phone || !donation.batch) {
         showToast('Please fill all required fields', true);
         return;
     }
-    
+
     db.boneDonations.push(donation);
     saveDatabase();
     closeAllModals();
@@ -441,7 +441,7 @@ function submitDonationForm(e) {
 // ======================== UTILITIES ========================
 function escapeHtml(str) {
     if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
+    return str.replace(/[&<>]/g, function (m) {
         if (m === '&') return '&amp;';
         if (m === '<') return '&lt;';
         if (m === '>') return '&gt;';
@@ -463,7 +463,7 @@ function bindEvents() {
             }
         });
     });
-    
+
     // Mobile menu toggle
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks');
@@ -472,7 +472,7 @@ function bindEvents() {
             navLinks.classList.toggle('show');
         });
     }
-    
+
     // Apply button (receive bones)
     const openApplyBtn = document.getElementById('openApplyBtn');
     if (openApplyBtn) {
@@ -485,7 +485,7 @@ function bindEvents() {
             openModal('applyModal');
         });
     }
-    
+
     // Donate Bones button
     const donateBoneBtn = document.getElementById('donateBoneBtn');
     if (donateBoneBtn) {
@@ -498,20 +498,20 @@ function bindEvents() {
             openModal('donateModal');
         });
     }
-    
+
     // Modal close buttons
     document.getElementById('closeApplyModal')?.addEventListener('click', () => closeAllModals());
     document.getElementById('closeDonateModal')?.addEventListener('click', () => closeAllModals());
     document.getElementById('closeLoginModal')?.addEventListener('click', () => closeAllModals());
     document.getElementById('closeSignupModal')?.addEventListener('click', () => closeAllModals());
-    
+
     // Close modal when clicking outside
     window.addEventListener('click', (e) => {
         if (e.target.classList && e.target.classList.contains('modal')) {
             e.target.style.display = 'none';
         }
     });
-    
+
     // Login/Signup forms
     const doLoginBtn = document.getElementById('doLoginBtn');
     if (doLoginBtn) {
@@ -521,7 +521,7 @@ function bindEvents() {
             handleLogin(email, pass);
         });
     }
-    
+
     const doSignupBtn = document.getElementById('doSignupBtn');
     if (doSignupBtn) {
         doSignupBtn.addEventListener('click', () => {
@@ -530,7 +530,7 @@ function bindEvents() {
             handleSignup(email, pass);
         });
     }
-    
+
     // Enter key in login/signup forms
     const loginPassword = document.getElementById('loginPassword');
     if (loginPassword) {
@@ -542,7 +542,7 @@ function bindEvents() {
             }
         });
     }
-    
+
     const signupPassword = document.getElementById('signupPassword');
     if (signupPassword) {
         signupPassword.addEventListener('keypress', (e) => {
@@ -553,7 +553,7 @@ function bindEvents() {
             }
         });
     }
-    
+
     // Toggle between login and signup
     const showSignupLink = document.getElementById('showSignupLink');
     if (showSignupLink) {
@@ -563,7 +563,7 @@ function bindEvents() {
             openModal('signupModal');
         });
     }
-    
+
     const showLoginLink = document.getElementById('showLoginLink');
     if (showLoginLink) {
         showLoginLink.addEventListener('click', (e) => {
@@ -572,18 +572,18 @@ function bindEvents() {
             openModal('loginModal');
         });
     }
-    
+
     // Admin panel
     const updateInventoryBtn = document.getElementById('updateInventoryBtn');
     if (updateInventoryBtn) updateInventoryBtn.addEventListener('click', updateInventoryFromAdmin);
-    
+
     const addHandoverBtn = document.getElementById('addHandoverBtn');
     if (addHandoverBtn) addHandoverBtn.addEventListener('click', addHandoverRecord);
-    
+
     // Form submissions
     const requestForm = document.getElementById('boneRequestForm');
     if (requestForm) requestForm.addEventListener('submit', submitBoneRequest);
-    
+
     const donateForm = document.getElementById('donateBoneForm');
     if (donateForm) donateForm.addEventListener('submit', submitDonationForm);
 }
@@ -596,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
     refreshInventoryUI();
     renderHandoverTable();
     showPage('home');
-    
+
     // Close mobile menu on window resize
     window.addEventListener('resize', () => {
         if (window.innerWidth > 860) {
@@ -609,21 +609,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Add ripple effect to all buttons
 document.querySelectorAll('.btn-primary, .btn-donate-bone, .btn-secondary, .auth-btn-primary').forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
         const x = e.clientX - e.target.getBoundingClientRect().left;
         const y = e.clientY - e.target.getBoundingClientRect().top;
-        
+
         const ripple = document.createElement('span');
         ripple.classList.add('ripple');
         ripple.style.left = `${x}px`;
         ripple.style.top = `${y}px`;
-        
+
         this.style.position = 'relative';
         this.style.overflow = 'hidden';
         this.appendChild(ripple);
-        
+
         setTimeout(() => {
             ripple.remove();
         }, 600);
     });
+});
+
+
+//notice
+
+// Simple Notice System - Opens Google Doc Modal
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('noticeModal');
+    const closeBtn = document.getElementById('closeNoticeModal');
+    const bell = document.getElementById('noticeBell');
+    const clickArea = document.getElementById('noticeClickArea');
+    const noticeContainer = document.querySelector('.notice-container');
+    
+    // Function to open modal
+    function openNoticeModal() {
+        if (modal) {
+            modal.style.display = 'flex';
+            // Refresh iframe content
+            const iframe = modal.querySelector('iframe');
+            if (iframe) {
+                const src = iframe.src;
+                iframe.src = src; // Reloads fresh content from Google
+            }
+        }
+        // Animate bell
+        if (bell) {
+            bell.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                bell.style.transform = 'scale(1)';
+            }, 200);
+        }
+    }
+    
+    // Add click listeners
+    if (bell) bell.addEventListener('click', openNoticeModal);
+    if (clickArea) clickArea.addEventListener('click', openNoticeModal);
+    if (noticeContainer) noticeContainer.addEventListener('click', openNoticeModal);
+    
+    // Close modal
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    }
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+    
+    // Set a friendly message
+    const noticeText = document.getElementById('dynamicNotice');
+    if (noticeText) {
+        noticeText.innerHTML = 'Click bell for latest announcement';
+    }
 });
