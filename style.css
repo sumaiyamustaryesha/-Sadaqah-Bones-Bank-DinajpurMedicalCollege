@@ -1209,7 +1209,7 @@ th {
 }
 
 /* Responsive Navbar - Auto stacks on mobile */
-/* @media (max-width: 700px) {
+@media (max-width: 700px) {
     .nav-container {
         flex-direction: column;
         text-align: center;
@@ -1219,30 +1219,58 @@ th {
         flex-wrap: wrap;
         justify-content: center;
     }
-} */
-
-
-/*quick fix navbar*/
-.nav-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0.8rem 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem; /* Increased gap */
 }
 
-/* Make nav links have more breathing room */
-.nav-links {
-    display: flex;
-    gap: 1.5rem; /* Increased from 1rem */
-    align-items: center;
+
+
+
+/* ================= MOBILE NAVBAR FIX ================= */
+
+@media (max-width: 850px) {
+
+    .nav-container{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0.8rem 1rem;
+    }
+
+    .mobile-menu-btn{
+        display: block;
+    }
+
+    .nav-links{
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .nav-links.show{
+        display: flex;
+    }
+
+    .auth-section{
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .logo{
+        display: flex;
+        /* align-items: center; */
+        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
+
 
 /* On tablet - stack but organized */
-@media (max-width: 850px) {
+/* @media (max-width: 850px) {
     .nav-container {
         flex-direction: column;
         gap: 1rem;
@@ -1259,4 +1287,4 @@ th {
     .logo {
         order: 0;
     }
-}
+} */

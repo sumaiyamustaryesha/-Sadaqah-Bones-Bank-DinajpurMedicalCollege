@@ -684,3 +684,11 @@ document.addEventListener('DOMContentLoaded', () => {
         noticeText.innerHTML = 'Click bell for latest announcement';
     }
 });
+
+
+const mobileBtn = document.getElementById("mobileMenuBtn");
+const navLinks = document.getElementById("navLinks");
+
+mobileBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+});
