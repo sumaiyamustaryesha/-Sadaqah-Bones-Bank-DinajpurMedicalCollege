@@ -474,7 +474,8 @@ function bindEvents() {
     }
 
     // Apply button (receive bones)
-    const openApplyBtn = document.getElementById('openApplyLink');
+   /*
+   const openApplyBtn = document.getElementById('openApplyLink');
 
     if (openApplyBtn) {
         openApplyBtn.addEventListener('click', (e) => {
@@ -490,6 +491,7 @@ function bindEvents() {
             openModal('applyModal');
         });
     }
+    */
 
     // Donate Bones button
     const donateBoneBtn = document.getElementById('donateBoneBtn');
