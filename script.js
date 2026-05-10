@@ -474,14 +474,19 @@ function bindEvents() {
     }
 
     // Apply button (receive bones)
-    const openApplyBtn = document.getElementById('openApplyBtn');
+    const openApplyBtn = document.getElementById('openApplyLink');
+
     if (openApplyBtn) {
-        openApplyBtn.addEventListener('click', () => {
+        openApplyBtn.addEventListener('click', (e) => {
+
+            e.preventDefault();
+
             if (!currentUser) {
                 showToast('Please login to apply for bones', true);
                 openModal('loginModal');
                 return;
             }
+
             openModal('applyModal');
         });
     }
@@ -638,7 +643,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bell = document.getElementById('noticeBell');
     const clickArea = document.getElementById('noticeClickArea');
     const noticeContainer = document.querySelector('.notice-container');
-    
+
     // Function to open modal
     function openNoticeModal() {
         if (modal) {
@@ -658,26 +663,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 200);
         }
     }
-    
+
     // Add click listeners
     if (bell) bell.addEventListener('click', openNoticeModal);
     if (clickArea) clickArea.addEventListener('click', openNoticeModal);
     if (noticeContainer) noticeContainer.addEventListener('click', openNoticeModal);
-    
+
     // Close modal
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
             modal.style.display = 'none';
         });
     }
-    
+
     // Close modal when clicking outside
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
         }
     });
-    
+
     // Set a friendly message
     const noticeText = document.getElementById('dynamicNotice');
     if (noticeText) {
